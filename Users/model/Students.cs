@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
-using Tema_OnlineSchool_Noilectii.admin.model;
-using Tema_OnlineSchool_Noilectii.user.model;
 
-namespace online_school.Student.model
+
+namespace Tema_OnlineSchool_Noilectii.Users.model
 {
-    internal class Students:Admin
+    internal class Student : User
     {
         private int _id;
         private string _firstnameStudent;
@@ -20,14 +18,14 @@ namespace online_school.Student.model
         private string _password;
         private int _media;
 
-        public Students(string Propietati) : base(Propietati)
+        public Student(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._firstnameStudent = cuvinte[3];
-            this._lastnameStudent = cuvinte[4];
-            this._facultate = cuvinte[5];
-            this._age = int.Parse(cuvinte[6]);
-            this._media = int.Parse(cuvinte[7]);
+            _firstnameStudent = cuvinte[5];
+            _lastnameStudent = cuvinte[4];
+            _facultate = cuvinte[5];
+            _age = int.Parse(cuvinte[6]);
+            _media = int.Parse(cuvinte[7]);
         }
 
         public int Id
@@ -65,7 +63,7 @@ namespace online_school.Student.model
         }
         public string Password
         {
-            get { return _password ; }
+            get { return _password; }
             set { _password = value; }
 
         }
@@ -78,23 +76,23 @@ namespace online_school.Student.model
 
         public override string Descriere()
         {
-            string desc = " "+base.Descriere();
-            desc += "Prenume: " + this._firstnameStudent + "\n";
-            desc += "Nume: " + this._lastnameStudent + "\n";
-            desc += "Facultate: " + this._facultate + "\n";
-            desc += "Varsta: " + this._age + "\n";
-            desc += "Media: " + this._media + "\n";
+            string desc = " " + base.Descriere();
+            desc += "Prenume: " + _firstnameStudent + "\n";
+            desc += "Nume: " + _lastnameStudent + "\n";
+            desc += "Facultate: " + _facultate + "\n";
+            desc += "Varsta: " + _age + "\n";
+            desc += "Media: " + _media + "\n";
             return desc;
 
         }
-        public  string DescriereStudenti()
+        public string DescriereStudenti()
         {
             string desc = " ";
-            desc += "Prenume: " + this._firstnameStudent + "\n";
-            desc += "Nume: " + this._lastnameStudent + "\n";
-            desc += "Facultate: " + this._facultate + "\n";
-            desc += "Varsta: " + this._age + "\n";
-            desc += "Media: " + this._media + "\n";
+            desc += "Prenume: " + _firstnameStudent + "\n";
+            desc += "Nume: " + _lastnameStudent + "\n";
+            desc += "Facultate: " + _facultate + "\n";
+            desc += "Varsta: " + _age + "\n";
+            desc += "Media: " + _media + "\n";
             return desc;
 
         }

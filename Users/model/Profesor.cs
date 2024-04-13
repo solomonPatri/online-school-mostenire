@@ -6,26 +6,24 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool_Noilectii.admin.model;
-using Tema_OnlineSchool_Noilectii.user.model;
 
-namespace online_school.Profesorii.model
+namespace Tema_OnlineSchool_Noilectii.Users.model
 {
-    internal class Profesor:Admin
+    internal class Profesor : User
     {
         private int _idProf;
         private string _nume;
         private int _nrStudenti;
         private string _facultate;
-        
+
 
         public Profesor(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._nume = cuvinte[3];
-            this._nrStudenti = int.Parse(cuvinte[4]);
-            this._facultate = cuvinte[5];
-           
+            _nume = cuvinte[3];
+            _nrStudenti = int.Parse(cuvinte[4]);
+            _facultate = cuvinte[5];
+
 
 
         }
@@ -51,24 +49,24 @@ namespace online_school.Profesorii.model
             get { return _facultate; }
             set { _facultate = value; }
         }
-        
+
 
         public override string Descriere()
         {
-            string desc = " "+base.Descriere();
-            desc += "Nume: " + this._nume + "\n";
-            desc += "Nr de studenti: " + this._nrStudenti + "\n";
-           desc += "Facultate: " + this._facultate + "\n";
+            string desc = " " + base.Descriere();
+            desc += "Nume: " + _nume + "\n";
+            desc += "Nr de studenti: " + _nrStudenti + "\n";
+            desc += "Facultate: " + _facultate + "\n";
             return desc;
         }
 
         public string DescriereProfesor()
         {
             string desc = " ";
-            desc += "Nume: " + this._nume + "\n";
-            desc += "Nr de studenti: " + this._nrStudenti + "\n";
-            desc += "Facultate: " + this._facultate + "\n";
-          
+            desc += "Nume: " + _nume + "\n";
+            desc += "Nr de studenti: " + _nrStudenti + "\n";
+            desc += "Facultate: " + _facultate + "\n";
+
             return desc;
         }
 

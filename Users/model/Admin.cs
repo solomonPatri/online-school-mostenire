@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool_Noilectii;
-using Tema_OnlineSchool_Noilectii.user.model;
 
-namespace Tema_OnlineSchool_Noilectii.admin.model
+namespace Tema_OnlineSchool_Noilectii.Users.model
 {
-    internal class Admin:User
+    public class Admin : User
     {
         private int _nrId;
         private string _type;
-        
 
-        public Admin(string Propietate):base(Propietate)
+
+        public Admin(string Propietate) : base(Propietate)
         {
             string[] cuvinte = Propietate.Split(',');
-            _type = cuvinte[2];
+            _nrId = int.Parse(cuvinte[0]);
+            _type = cuvinte[1];
         }
 
 

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Tema_OnlineSchool_Noilectii;
 
-namespace Tema_OnlineSchool_Noilectii.user.model
+namespace Tema_OnlineSchool_Noilectii.Users.model
 {
-    internal class User
+    public class User
     {
         private string _username;
         private string _password;
@@ -16,8 +16,8 @@ namespace Tema_OnlineSchool_Noilectii.user.model
         public User(string Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            _username = cuvinte[0];
-            _password = cuvinte[1];
+            _username = cuvinte[1];
+            _password = cuvinte[2];
         }
 
         public string Username
