@@ -18,10 +18,10 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
         public StiinteEconomice(string Propietati):base(Propietati)
         {
             string[]cuvinte = Propietati.Split(',');
-            this._Facultate = cuvinte[4];
-            this._titlul = cuvinte[5];
-            this._continut = cuvinte[6];
-            this._dataeliberari = cuvinte[7];
+            this._Facultate = cuvinte[3];
+            this._titlul = cuvinte[4];
+            this._continut = cuvinte[5];
+            this._dataeliberari = cuvinte[6];
         }
 
         public string Facultate

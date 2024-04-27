@@ -15,9 +15,10 @@ namespace Tema_OnlineSchool.Courses.model
         public Course(string Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-           this._id = int.Parse(cuvinte[0]);
-            this._profesorId = int.Parse(cuvinte[1]);
-           this._type = cuvinte[2];
+
+           this._id = int.Parse(cuvinte[1]);
+           this._profesorId = int.Parse(cuvinte[2]);
+           this._type = cuvinte[0];
          
         }
 

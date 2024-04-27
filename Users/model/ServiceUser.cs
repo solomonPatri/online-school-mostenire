@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool_Noilectii.Users.model;
 
-namespace Tema_OnlineSchool_Noilectii.Users.service
+namespace Tema_OnlineSchool_Noilectii.Users.model
 {
     internal class ServiceUser
     {
@@ -30,7 +29,7 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(line.Split(',')[0]);
+                        
 
                         switch (line.Split(',')[0])
                         {

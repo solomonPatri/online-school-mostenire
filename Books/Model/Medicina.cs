@@ -17,9 +17,9 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
         public Medicina(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._Specialitate = cuvinte[4];
-            this._AnStudiu = int.Parse(cuvinte[5]);
-            this._titlul = cuvinte[6];
+            this._Specialitate = cuvinte[3];
+            this._AnStudiu = int.Parse(cuvinte[4]);
+            this._titlul = cuvinte[5];
           
         }
 

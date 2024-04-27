@@ -17,9 +17,9 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
         public Matematica(string Propietati) : base(Propietati)
         {
             string[]cuvinte = Propietati.Split(',');
-            this._Titlul = cuvinte[4];
-            this._nrPagini = int.Parse(cuvinte[5]);
-            this._continut = cuvinte[6];
+            this._Titlul = cuvinte[3];
+            this._nrPagini = int.Parse(cuvinte[4]);
+            this._continut = cuvinte[5];
         }
 
 

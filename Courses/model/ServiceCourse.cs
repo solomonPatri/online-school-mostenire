@@ -17,6 +17,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         {
             _curs = new List<Course>();
             this._filePath = GetDirectory();
+            this.load();
 
 
 
@@ -33,7 +34,6 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(line.Split(',')[0]);
 
                         switch (line.Split(',')[0])
                         {
@@ -60,6 +60,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
                                 _curs.Add(doctorat);
                                 break;
                             default:
+                                
                                 break;
 
                         }
@@ -97,16 +98,31 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public void afisareAll()
         {
-            foreach(Course course in this._curs) {
-
+            foreach(Course course in _curs)
+            {
                 Console.WriteLine(course.Descriere());
-            
             }
 
-
-
         }
+        public Course returnCursuri(string type)
+        {
+            for(int i =0;i< _curs.Count;i++)
+            {
+                if(_curs is Course)
+                {
+                    if (_curs[i].Type.Equals(type))
+                    {
+                        return _curs[i];
 
+                    }
+
+
+                }
+
+
+            }
+            return null;
+        }
 
 
 
