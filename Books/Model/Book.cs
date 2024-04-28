@@ -11,15 +11,24 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
         private int _id;
         private int _studentId;
         private string _type;
-       
+
         public Book(string Propietati)
         {
-            string[]cuvinte = Propietati.Split(',');
+            string[] cuvinte = Propietati.Split(',');
             this._id = int.Parse(cuvinte[1]);
             this._studentId = int.Parse(cuvinte[2]);
             this._type = cuvinte[0];
 
         }
+
+        public Book(int id,string Type)
+        {
+            this._id = id;
+            
+            this._type = Type;
+        }
+
+       
         public int Id
         {
             get { return _id; }

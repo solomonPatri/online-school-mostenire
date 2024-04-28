@@ -22,6 +22,14 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
             this._titlul = cuvinte[5];
           
         }
+        public Medicina(string Spec,int Anstudiu,string titlul,string type,int id) : base(id,type)
+        {
+            this._Specialitate = Spec;
+            this.Titlul = titlul;
+            this._AnStudiu= Anstudiu;
+
+        }
+
 
         public string Specialitate
         {

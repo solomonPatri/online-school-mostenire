@@ -23,6 +23,13 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
             this._continut = cuvinte[5];
             this._dataeliberari = cuvinte[6];
         }
+        public StiinteEconomice(string type,int id,string facultate,string titlul,string continut,string dataelib) : base(id, type)
+        {
+            this._Facultate = facultate;
+            this._titlul= titlul;
+            this._continut = continut;
+            this._dataeliberari= dataelib;
+        }
 
         public string Facultate
         {

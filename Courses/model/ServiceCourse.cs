@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tema_OnlineSchool.Courses.model;
+using Tema_OnlineSchool_Noilectii.Books.Model;
 
 
 namespace Tema_OnlineSchool_Noilectii.Courses.model
@@ -96,6 +97,60 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         }
 
+        public void AfisareAllCourse()
+        {
+            for(int i =0;i< _curs.Count; i++)
+            {
+                Console.WriteLine(_curs[i].Descriere());
+
+
+            }
+
+
+
+        }
+
+
+
+        public Course GetCourseById(int id)
+        {
+            List<Course> curs = _curs;
+            for (int i = 0; i < curs.Count; i++)
+            {
+                if (_curs[i].Id == id)
+                {
+                    return _curs[i];
+
+
+                }
+
+            }
+            return null;
+
+        }
+        public int GenerateIdUnique()
+        {
+            Random random = new Random();
+            int nrrandom = random.Next(100, 10000);
+
+            while (GetCourseById(nrrandom) != null)
+            {
+                nrrandom = random.Next(100, 10000);
+            }
+
+            return nrrandom;
+
+
+        }
+
+        public void adaugarecourse(Course newcourse)
+        {
+            newcourse.Id = this.GenerateIdUnique();
+            this._curs.Add(newcourse);
+
+        }
+
+
         public void afisareAll()
         {
             foreach(Course course in _curs)
@@ -124,7 +179,44 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
             return null;
         }
 
+        public bool VerificareCourse(string name)
+        {
+            foreach (Course Course in _curs)
+            {
+                if(Course is An1 || Course is AnTerminal ||Course is Master || Course is Doctorat)
+                {
 
+                    if((Course as An1).NameCurs.Equals(name))
+                    {
+                        return true;
+                    }
+                    if((Course as AnTerminal).Namecurs.Equals(name))
+                    {
+                        return true;
+                    }
+                    if((Course as Master).NameCurs.Equals(name))
+                    {
+
+                        return true;
+                    }
+                    if((Course is Doctorat).Equals(name))
+                    {
+                        return true;
+
+                    }
+
+
+                }
+            }
+            return false;
+
+
+
+
+
+
+
+        }
 
 
 

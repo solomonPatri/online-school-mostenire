@@ -21,8 +21,12 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
             this._nrPagini = int.Parse(cuvinte[4]);
             this._continut = cuvinte[5];
         }
-
-
+        public Matematica(string titlul, int nrPagini, string continut, string type,int id) : base(id,type)
+        {
+            this._Titlul = titlul;
+            this._nrPagini = nrPagini;
+            this._continut = continut;
+        }
 
         public string Titlul
         {

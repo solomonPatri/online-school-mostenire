@@ -114,7 +114,8 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
 
 
         }
-        
+       
+
         public Book GetBookByName(string name)
         {
             for(int i=0;i< _books.Count;i++)
@@ -131,21 +132,7 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
 
 
         }
-        public void AfisareByName(Book book)
-        { 
-            for(int i=0;i< _books.Count; i++)
-            {
-                if (_books[i] is Book && _books[i].Equals(book))
-                {
-                    Console.WriteLine(_books[i].Descriere());
-                    
-                }
-
-
-            }
-          
-
-        }
+        
         public Book GetBookById(int id)
         {
             List<Book> books = _books;
@@ -182,56 +169,48 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
 
 
         }
-        public void AdaugareVerificare(string type,string titlul,Book newbook)
+        
+        public bool VerificareBook(string title)
         {
-            for(int i =0;i < _books.Count;i++)
+            foreach (Book book in _books)
             {
-                if (_books[i].Type.Equals(type))
+                if(book is Matematica || book is Medicina|| book is StiinteEconomice)
                 {
-                    Book book = _books[i];
-                    if ((book as Matematica).Titlul.Equals(titlul)){
 
-                        Console.WriteLine("Deja exista o carte de Matematica cu acest titlu");
-                    }
-                    else
+                    if((book as Matematica).Titlul.Equals(title))
                     {
-
-                        adaugareBook(newbook);
+                        return true;
                     }
-
-                    if((book as Medicina).Titlul.Equals(titlul))
+                    if((book as Medicina).Titlul.Equals(title))
                     {
-                        Console.WriteLine("Deja exista o carte de Medicina ci acest titlul");
+                        return true;
                     }
-                    else
+                    if((book as StiinteEconomice).Titlul.Equals(title))
                     {
-                        adaugareBook(newbook);
-
+                        return true;
                     }
-                    if((book as StiinteEconomice).Titlul.Equals(titlul))
-                    {
-                        Console.WriteLine("Deja exista o carte de Stiinte Economice cu acest titlul");
-
-
-                    }
-
-
-
 
                 }
 
 
-
-
-
-
-
             }
-
-
-
+            return false;
 
         }
+      
+        public void AfisareByType(Book book)
+        {
+            for(int i =0;i< _books.Count; i++)
+            {
+                if (_books[i].Type.Equals(book.Type))
+                {
+                    Console.WriteLine(_books[i].Descriere());
+                }
+            }
+
+        }
+
+
 
 
 
