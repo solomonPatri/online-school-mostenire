@@ -11,22 +11,19 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
     internal class StiinteEconomice:Book
     {
         private string _Facultate;
-        private string _titlul;
         private string _continut;
         private string _dataeliberari;
 
         public StiinteEconomice(string Propietati):base(Propietati)
         {
             string[]cuvinte = Propietati.Split(',');
-            this._Facultate = cuvinte[3];
-            this._titlul = cuvinte[4];
+            this._Facultate = cuvinte[4];
             this._continut = cuvinte[5];
             this._dataeliberari = cuvinte[6];
         }
-        public StiinteEconomice(string type,int id,string facultate,string titlul,string continut,string dataelib) : base(id, type)
+        public StiinteEconomice(string type,int id,int studentid,string facultate,string titlul,string continut,string dataelib) : base(id, type, titlul, studentid)
         {
             this._Facultate = facultate;
-            this._titlul= titlul;
             this._continut = continut;
             this._dataeliberari= dataelib;
         }
@@ -38,11 +35,7 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
         }
        
 
-        public string Titlul
-        {
-            get { return this._titlul;}
-            set { this._titlul = value;}
-        }
+  
 
         public string Continut
         {
@@ -58,8 +51,7 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
 
         public override string Descriere()
         {
-            string desc = " ";
-            desc += "Titlul: " + Titlul + "\n";
+            string desc = " "+base.Descriere();
             desc += "Continut: " + Continut + "\n";
             desc += "Facultate: " + Facultate + "\n";
             desc += "Data eliberari: " + Dataeliberari + "\n";

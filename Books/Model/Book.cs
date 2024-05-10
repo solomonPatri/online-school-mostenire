@@ -11,6 +11,7 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
         private int _id;
         private int _studentId;
         private string _type;
+        private string _title;
 
         public Book(string Propietati)
         {
@@ -18,14 +19,16 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
             this._id = int.Parse(cuvinte[1]);
             this._studentId = int.Parse(cuvinte[2]);
             this._type = cuvinte[0];
+            this._title = cuvinte[3];
 
         }
 
-        public Book(int id,string Type)
+        public Book(int id,string Type,string title,int studentid)
         {
+            this._studentId=studentid;
             this._id = id;
-            
             this._type = Type;
+            this._title = title;
         }
 
        
@@ -48,12 +51,17 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
             set { _type = value; }
 
         }
-        
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; }
+        }
 
         public virtual string Descriere()
         {
             string desc = " ";
-            desc += "Tipul: " + this._type + "\n";
+            desc += "Tipul: " + this.Type + "\n";
+            desc += "Titlul:" + this.Title + "\n";
 
             return desc; 
 

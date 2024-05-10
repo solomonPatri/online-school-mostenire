@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tema_OnlineSchool_Noilectii.Users.model;
 
-namespace Tema_OnlineSchool_Noilectii.Users.model
+namespace Tema_OnlineSchool_Noilectii.Users.service
 {
     internal class ServiceUser
     {
@@ -29,7 +30,7 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        
+
 
                         switch (line.Split(',')[0])
                         {
@@ -86,7 +87,7 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
             return filePath;
         }
 
-        public void afisare()
+        public void afisareUser()
         {
             foreach (User users in _users)
             {
@@ -95,6 +96,21 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
 
 
         }
+         public User GetUserByDate(string username,string password)
+        {
+            for(int i=0;i<_users.Count;i++)
+            {
+                if (_users[i].Username.Equals(username) && _users[i].Password.Equals(password))
+                {
+                    return _users[i];
+
+                }
+
+            }
+            return null;
+        }
+
+
 
         public void afisareUsername()
         {
@@ -105,30 +121,85 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
                 Console.WriteLine(users.Username);
             }
         }
-        public void MediaStudentilor()
+
+        public User GetUserById(int id)
         {
-            //Console.WriteLine("Media studentilor:" + "\n");
-            //int suma = 0;
-            //int media = 0;
-            //foreach (User studenti in this._users)
-            //{
+            List<User> users = _users;
+            for (int i = 0; i < users.Count; i++)
+            {
+                if ((users[i] as Admin).Id == id)
+                {
+                    return users[i];
 
-            //    if (studenti is Student)
-            //    {
-            //        Console.WriteLine((studenti as Student).Media);
-            //        suma += (studenti as Student).Media;
-            //        media = suma / studenti;
+                }
+                if ((users[i] as Profesor).IdProfesor == id)
+                {
+                    return users[i];
 
-            //    }
+                }
+                if ((users[i] as Student).Id == id)
+                {
 
+                    return users[i];
+                }
 
-            //}
+            }
 
-            //Console.WriteLine("Media total este: " +media);
+            return null;
 
+        }
+
+        public User GetSpecifUser(string username,string password)
+        {
+           
+            User user = GetUserByDate(username,password);
+
+            for(int i=0;i<_users.Count;i++)
+            {
+                if ((user as Profesor).Username.Equals(_users[i].Username) && (user as Profesor).Password.Equals(_users[i].Password))
+                {
+                    Profesor prof = user as Profesor;
+                    return prof;
+
+                }
+                else
+                {
+                    if((user as Student).Username.Equals(_users[i].Username) && (user as Student).Password.Equals(_users[i].Password))
+                    {
+                        Student student = user as Student;
+                        return student;
+
+                    }
+                }
+
+            }
+
+            return null;
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

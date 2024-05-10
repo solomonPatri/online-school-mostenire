@@ -19,7 +19,11 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
             _username = cuvinte[1];
             _password = cuvinte[2];
         }
-
+        public User(string user,string pass)
+        {
+            this._username = user;
+            this._password = pass;
+        }
         public string Username
         {
             get { return _username; }

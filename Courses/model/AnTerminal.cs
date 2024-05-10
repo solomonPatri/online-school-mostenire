@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool.Courses.model;
+using Tema_OnlineSchool_Noilectii.Courses.model;
 
 namespace Tema_OnlineSchool_Noilectii.Courses.model
 {
     internal class AnTerminal:Course
     {
-        private string _namecurs;
+  
         private string _studentname;
         private int _anAbsolvire;
         private string _facultatea;
@@ -18,18 +19,24 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         public AnTerminal(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._namecurs = cuvinte[3];
+            
             this._studentname = cuvinte[4];
             this._anAbsolvire = int.Parse(cuvinte[5]);
             this._facultatea = cuvinte[6];
             this._aniiStudii = int.Parse(cuvinte[7]);
 
         }
-        public string Namecurs
+        public AnTerminal(string type,int id,int profid ,string name,string namestudent,int anAbs,string facultate,int aniiStudii) : base(type, id,profid, name)
         {
-            get { return _namecurs; }
-            set { _namecurs = value; }
+            
+            this.Studentname = namestudent;
+            this.AnAbsolvire = anAbs;
+            this.Facultatea = facultate;
+            this.AniiStudii= aniiStudii;
+
+
         }
+        
         public string Studentname
         {
             get { return _studentname; }
@@ -41,7 +48,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
             set { _anAbsolvire = value;}
         }
 
-        public string Facultate
+        public string Facultatea
         {
             get { return _facultatea;}
             set { _facultatea = value;}
@@ -55,8 +62,8 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public override string Descriere()
         {
-            string desc = " ";
-            desc += "Cursul: " + Namecurs + "\n";
+            string desc = " "+base.Descriere();
+
             desc += "Student name: " + Studentname + "\n";
             desc += "Anul Absolvire: " + AnAbsolvire + "\n";
             desc += "Anii studiati: " + AniiStudii + "\n";
@@ -67,7 +74,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         public  string DescriereAnTerminal()
         {
             string desc = " ";
-            desc += "Cursul: " + Namecurs + "\n";
+          
             desc += "Student name: " + Studentname + "\n";
             desc += "Anul Absolvire: " + AnAbsolvire + "\n";
             desc += "Anii studiati: " + AniiStudii + "\n";

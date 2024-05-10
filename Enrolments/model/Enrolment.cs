@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace online_school.Enrolments.model
+namespace Tema_OnlineSchool_Noilectii.Enrolments.model
 {
     public  class Enrolment
     {

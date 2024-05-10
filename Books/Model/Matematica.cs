@@ -10,29 +10,24 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
 {
     public class Matematica : Book
     {
-        private string _Titlul;
         private int _nrPagini;
         private string _continut;
 
         public Matematica(string Propietati) : base(Propietati)
         {
             string[]cuvinte = Propietati.Split(',');
-            this._Titlul = cuvinte[3];
+           
             this._nrPagini = int.Parse(cuvinte[4]);
             this._continut = cuvinte[5];
         }
-        public Matematica(string titlul, int nrPagini, string continut, string type,int id) : base(id,type)
+        public Matematica(string titlul, int nrPagini, string continut, string type,int id,int studentid) : base(id,type,titlul,studentid)
         {
-            this._Titlul = titlul;
+          
             this._nrPagini = nrPagini;
             this._continut = continut;
         }
 
-        public string Titlul
-        {
-            get { return _Titlul;}
-            set { _Titlul = value;}
-        }
+       
         public int nrPagini
         {
             get { return _nrPagini;}
@@ -47,8 +42,7 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
 
         public override string Descriere()
         {
-            string desc = " ";
-            desc += "Titlul: " + Titlul + "\n";
+            string desc = " " + base.Descriere();
             desc += "Nr de Pagini: " + nrPagini + "\n";
             desc += "Continut: " + Continut + "\n";
             return desc;

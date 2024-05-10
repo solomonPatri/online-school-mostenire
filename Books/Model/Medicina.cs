@@ -12,20 +12,19 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
     {
         private string _Specialitate;
         private int _AnStudiu;
-        private string _titlul;
 
         public Medicina(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._Specialitate = cuvinte[3];
-            this._AnStudiu = int.Parse(cuvinte[4]);
-            this._titlul = cuvinte[5];
+            this._Specialitate = cuvinte[4];
+            this._AnStudiu = int.Parse(cuvinte[5]);
+            
           
         }
-        public Medicina(string Spec,int Anstudiu,string titlul,string type,int id) : base(id,type)
+        public Medicina(string Spec,int Anstudiu,string titlul,string type,int id, int studentid) : base(id,type,titlul, studentid)
         {
             this._Specialitate = Spec;
-            this.Titlul = titlul;
+          
             this._AnStudiu= Anstudiu;
 
         }
@@ -42,18 +41,10 @@ namespace Tema_OnlineSchool_Noilectii.Books.Model
             set { this._AnStudiu = value; }
         }
 
-        public string Titlul
-        {
-            get { return this._titlul; }
-            set { this._titlul = value; }
-        }
-
-       
-
+    
         public override string Descriere()
         {
-            string desc = " ";
-            desc += "Titlul: " + Titlul + "\n";
+            string desc = " "+base.Descriere();
             desc += "An de Studiu: " + AnStudiu + "\n";
             desc += "Specialtitate: " + Specialitate + "\n";
 

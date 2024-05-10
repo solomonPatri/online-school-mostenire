@@ -15,8 +15,8 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
         public Admin(string Propietate) : base(Propietate)
         {
             string[] cuvinte = Propietate.Split(',');
-            _nrId = int.Parse(cuvinte[0]);
-            _type = cuvinte[1];
+            _nrId = int.Parse(cuvinte[3]);
+            _type = cuvinte[0];
         }
 
 

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool.Courses.model;
 using Tema_OnlineSchool_Noilectii.Books.Model;
+using Tema_OnlineSchool_Noilectii.Courses.model;
 
 
-namespace Tema_OnlineSchool_Noilectii.Courses.model
+namespace Tema_OnlineSchool_Noilectii.Courses.service
 {
     internal class ServiceCourse
     {
@@ -17,8 +18,8 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         public ServiceCourse()
         {
             _curs = new List<Course>();
-            this._filePath = GetDirectory();
-            this.load();
+            _filePath = GetDirectory();
+            load();
 
 
 
@@ -47,7 +48,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
 
                             case "An Terminal":
-                               AnTerminal anterminal = new AnTerminal(line);
+                                AnTerminal anterminal = new AnTerminal(line);
                                 _curs.Add(anterminal);
 
                                 break;
@@ -61,7 +62,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
                                 _curs.Add(doctorat);
                                 break;
                             default:
-                                
+
                                 break;
 
                         }
@@ -88,10 +89,10 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
 
         }
-        private String GetDirectory()
+        private string GetDirectory()
         {
             string currentDirectory = Directory.GetCurrentDirectory();
-            string dataFolder = Path.Combine(currentDirectory,"data");
+            string dataFolder = Path.Combine(currentDirectory, "data");
             string filepath = Path.Combine(dataFolder, "Courses.txt");
             return filepath;
 
@@ -99,7 +100,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public void AfisareAllCourse()
         {
-            for(int i =0;i< _curs.Count; i++)
+            for (int i = 0; i < _curs.Count; i++)
             {
                 Console.WriteLine(_curs[i].Descriere());
 
@@ -110,7 +111,16 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         }
 
+        public List<Course> GetCourses()
+        {
+            List<Course> courses = new List<Course>();
+            for(int i=0; i< _curs.Count; i++)
+            {
+                courses.Add(_curs[i]);
+            }
+            return courses;
 
+        }
 
         public Course GetCourseById(int id)
         {
@@ -145,25 +155,16 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public void adaugarecourse(Course newcourse)
         {
-            newcourse.Id = this.GenerateIdUnique();
-            this._curs.Add(newcourse);
+            newcourse.Id = GenerateIdUnique();
+            _curs.Add(newcourse);
 
         }
 
-
-        public void afisareAll()
-        {
-            foreach(Course course in _curs)
-            {
-                Console.WriteLine(course.Descriere());
-            }
-
-        }
         public Course returnCursuri(string type)
         {
-            for(int i =0;i< _curs.Count;i++)
+            for (int i = 0; i < _curs.Count; i++)
             {
-                if(_curs is Course)
+                if (_curs is Course)
                 {
                     if (_curs[i].Type.Equals(type))
                     {
@@ -181,31 +182,12 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public bool VerificareCourse(string name)
         {
-            foreach (Course Course in _curs)
+            for (int i = 0; i < _curs.Count; i++)
             {
-                if(Course is An1 || Course is AnTerminal ||Course is Master || Course is Doctorat)
+                if (_curs[i].Name.Equals(name))
                 {
 
-                    if((Course as An1).NameCurs.Equals(name))
-                    {
-                        return true;
-                    }
-                    if((Course as AnTerminal).Namecurs.Equals(name))
-                    {
-                        return true;
-                    }
-                    if((Course as Master).NameCurs.Equals(name))
-                    {
-
-                        return true;
-                    }
-                    if((Course is Doctorat).Equals(name))
-                    {
-                        return true;
-
-                    }
-
-
+                    return true;
                 }
             }
             return false;
@@ -217,6 +199,63 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
 
         }
+
+        public List<Course> FiltrareCourseByProfId(int idprof)
+        {
+            List<Course> curs = new List<Course>();
+
+            for (int i = 0; i < _curs.Count; i++)
+            {
+                if (_curs[i].Profesorid.Equals(idprof))
+                {
+
+                    curs.Add(_curs[i]);
+                  
+
+
+                }
+
+            }
+            return curs;
+        }
+
+        public List<Course> CourseLista(int idprof)
+        {
+            List<Course> cursuri = FiltrareCourseByProfId(idprof);
+
+            for(int i=0; i < cursuri.Count;i++)
+            {
+                Console.WriteLine(cursuri[i].Descriere());
+
+            }
+
+            return cursuri;
+
+        }
+        public bool deleteCurs(string name, int idprof)
+        {
+            List<Course> cursuri = CourseLista(idprof);
+            for (int i = 0; i < cursuri.Count; i++)
+            {
+                if (cursuri[i].Name.Equals(name))
+                {
+                    _curs.Remove(cursuri[i]);
+                    return true;
+                }
+
+
+            }
+            return false;
+
+
+        }
+
+
+
+
+
+
+
 
 
 

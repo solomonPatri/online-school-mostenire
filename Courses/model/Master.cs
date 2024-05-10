@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool.Courses.model;
+using Tema_OnlineSchool_Noilectii.Courses.model;
 
 namespace Tema_OnlineSchool_Noilectii.Courses.model
 {
     internal class Master:Course
     {
-        private string _nameCurs;
+       
         private string _facultate;
         private string _specialitate;
         private int _nrStudenti;
@@ -17,16 +17,20 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         public Master(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._nameCurs = cuvinte[3];
+            
             this._facultate = cuvinte[4];
             this._specialitate = cuvinte[5];
             this._nrStudenti = int.Parse(cuvinte[6]);
         }
-        public string NameCurs
+        public Master(string type,int id,int profId,string name,string facultate,string specialitate,int nrstudenti) : base(type, id,profId, name)
         {
-            get { return _nameCurs; }
-            set { _nameCurs = value; }
+            
+            this.Facultate = facultate;
+            this._specialitate = specialitate;
+            this._nrStudenti = nrstudenti;
+
         }
+        
         public string Facultate
         {
             get { return _facultate; }
@@ -48,8 +52,8 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public override string Descriere()
         {
-            string desc = " ";
-            desc += "Name Curs: " + NameCurs + "\n";
+            string desc = " "+base.Descriere();
+            
             desc += "Facultate: " + Facultate + "\n";
             desc += "Specialitate: " + Specialitate + "\n";
             desc += "Nr de Studenti: " + NrStudenti + "\n";
@@ -59,7 +63,7 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         public string DescriereMaster()
         {
             string desc = " ";
-            desc += "Name Curs: " + NameCurs + "\n";
+           
             desc += "Facultate: " + Facultate + "\n";
             desc += "Specialitate: " + Specialitate + "\n";
             desc += "Nr de Studenti: " + NrStudenti + "\n";

@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using online_school.Courses.model;
-using online_school.Enrolments.model;
-using online_school.Student.model;
-using online_school.Utile;
+using Tema_OnlineSchool_Noilectii.Courses.model;
+using Tema_OnlineSchool_Noilectii.Enrolments.model;
+using Tema_OnlineSchool_Noilectii.Users.model;
+using Tema_OnlineSchool_Noilectii.Utile;
 
 namespace online_school.Enrolments.Service
 {

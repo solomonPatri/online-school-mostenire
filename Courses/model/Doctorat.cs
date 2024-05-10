@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tema_OnlineSchool.Courses.model;
+using Tema_OnlineSchool_Noilectii.Courses.model;
 
 namespace Tema_OnlineSchool_Noilectii.Courses.model
 {
     internal class Doctorat : Course
     {
-        private string _NameCurs;
+       
         private string _dataExaminari;
         private string _specialitate;
         private int _nrDiploma;
         public Doctorat(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            this._NameCurs = cuvinte[3];
             this._dataExaminari = cuvinte[4];
             this._specialitate = cuvinte[5];
             this._nrDiploma = int.Parse(cuvinte[6]);
 
 
         }
-
-        public string NameCurs
+        public Doctorat(string type,int id,int profid ,string name,string dataExam,string specialitate,int nrDiploma) : base(type, id,profid,name)
         {
-            get { return _NameCurs; }
-            set { _NameCurs = value; }
+           
+            this.DataExaminari = dataExam;
+            this.Specialitate = specialitate;
+            this.nrDiploma=nrDiploma;
+
         }
+
+        
         public string DataExaminari
         {
             get { return _dataExaminari; }
@@ -47,8 +50,8 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
 
         public override string Descriere()
         {
-            string desc = " ";
-            desc += "Name curs: " + NameCurs + "\n";
+            string desc = " "+base.Descriere();
+          
             desc += "Data examinari: " + DataExaminari + "\n";
             desc += "Specialitate: " + Specialitate + "\n";
             return desc;
@@ -57,7 +60,6 @@ namespace Tema_OnlineSchool_Noilectii.Courses.model
         public  string DescriereDoctorat()
         {
             string desc = " ";
-            desc += "Name curs: " + NameCurs + "\n";
             desc += "Data examinari: " + DataExaminari + "\n";
             desc += "Specialitate: " + Specialitate + "\n";
             return desc;
