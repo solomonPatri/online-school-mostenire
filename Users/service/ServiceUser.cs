@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,9 +97,9 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
 
         }
-         public User GetUserByDate(string username,string password)
+        public User GetUserByDate(string username, string password)
         {
-            for(int i=0;i<_users.Count;i++)
+            for (int i = 0; i < _users.Count; i++)
             {
                 if (_users[i].Username.Equals(username) && _users[i].Password.Equals(password))
                 {
@@ -149,24 +150,24 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
         }
 
-        public User GetSpecifUser(string username,string password)
+        public User GetSpecifUser(string username, string password)
         {
-           
-            User user = GetUserByDate(username,password);
 
-            for(int i=0;i<_users.Count;i++)
+            User user = GetUserByDate(username, password);
+
+            for (int i = 0; i < _users.Count; i++)
             {
                 if ((user as Profesor).Username.Equals(_users[i].Username) && (user as Profesor).Password.Equals(_users[i].Password))
                 {
-                    Profesor prof = user as Profesor;
+                    Profesor prof = _users[i] as Profesor;
                     return prof;
 
                 }
                 else
                 {
-                    if((user as Student).Username.Equals(_users[i].Username) && (user as Student).Password.Equals(_users[i].Password))
+                    if ((user as Student).Username.Equals(_users[i].Username) && (user as Student).Password.Equals(_users[i].Password))
                     {
-                        Student student = user as Student;
+                        Student student = _users[i] as Student;
                         return student;
 
                     }
@@ -179,27 +180,36 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
         }
 
+        public List<User> AfisareUserByIdiuri(List<int> ids)
+        {
+            List<User> users = new List<User>();
+
+            for (int i = 0; i < _users.Count; i++)
+            {
+                if (ids.Equals((_users[i] as Student).Id))
+                {
+                    users.Add(_users[i] as Student);
+
+                    
+                }
+                else
+                {
+                    if (ids.Equals((_users[i] as Profesor).IdProfesor))
+                    {
+                        users.Add(_users[i] as Profesor);
+                      
+
+                    }
+                    
+                }
+
+            }
+
+            return users;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        } 
 
 
     }

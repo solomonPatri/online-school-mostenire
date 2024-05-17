@@ -102,11 +102,11 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
             }
 
         }
-        
+
 
         public Book GetBookByTitle(string title)
         {
-            for(int i =0;i < _books.Count;i++)
+            for (int i = 0; i < _books.Count; i++)
             {
                 if (_books[i].Title.Equals(title))
                 {
@@ -126,9 +126,9 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
                 {
 
                     list.Add(_books[i]);
-                   
-                } 
-               
+
+                }
+
             }
             return list;
 
@@ -185,12 +185,12 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
             return false;
         }
 
-        public List<Book>FiltrareByStudentId(int studentid)
+        public List<Book> FiltrareByStudentId(int studentid)
         {
             List<Book> book = new List<Book>();
-            for(int i =0;i<_books.Count;i++)
+            for (int i = 0; i < _books.Count; i++)
             {
-                if (_books[i].StudentId == studentid)
+                if (_books[i].StudentId.Equals(studentid))
                 {
                     book.Add(_books[i]);
 
@@ -204,24 +204,25 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
 
 
         }
-       
-        public List<Book> BookLista(int studentid)
+
+        public void BookLista(int studentid)
         {
             List<Book> books = FiltrareByStudentId(studentid);
 
-            for(int i = 0; i < books.Count; i++)
+            for (int i = 0; i < books.Count; i++)
             {
+
                 Console.WriteLine(books[i].Descriere());
 
             }
-            return books;
+
 
         }
         public void SortareDupaNume()
         {
-            for(int i =0;i < _books.Count-1; i++)
+            for (int i = 0; i < _books.Count - 1; i++)
             {
-                for(int j=i+1;j<_books.Count;j++)
+                for (int j = i + 1; j < _books.Count; j++)
                 {
 
                     if (_books[i].Title == _books[j].Title)
@@ -235,10 +236,10 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
 
         }
 
-        public bool deleteBook(string title,int studentid)
+        public bool deleteBook(string title, int studentid)
         {
-            List<Book> books = BookLista(studentid);
-            for(int i = 0; i < books.Count; i++)
+            List<Book> books = FiltrareByStudentId(studentid);
+            for (int i = 0; i < books.Count; i++)
             {
                 if (books[i].Title.Equals(title))
                 {
@@ -255,58 +256,7 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
 
         }
 
-        public void Modificare(Book newBook,string Title)
-        {
-            List<Book> book = _books;
-
-
-            for(int i = 0; i < book.Count; i++)
-            {
-                if (book[i].Title.Equals(Title))
-                {
-
-                    if (!newBook.Title.Equals(book[i].Title))
-                    {
-                        book[i].Title = newBook.Title;
-                    }
-
-                    if (!newBook.Type.Equals(book[i].Type)){
-
-                        book[i].Type = newBook.Type;
-
-                    }
-                    if (!newBook.StudentId.Equals(book[i].StudentId))
-                    {
-                        book[i].StudentId = newBook.StudentId;
-
-                    }   
-
-
-
-                }
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-      
-
-
-
-
-
-
+       
 
 
 
@@ -323,6 +273,21 @@ namespace Tema_OnlineSchool_Noilectii.Books.service
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

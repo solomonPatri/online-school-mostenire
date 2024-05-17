@@ -28,12 +28,12 @@ namespace online_school.Enrolments.Service
         {
             Enrolment e1 = new Enrolment(GenerateIdUnique(), 1, 10);
             Enrolment e2 = new Enrolment(GenerateIdUnique(), 2, 10);
-            Enrolment e3 = new Enrolment(GenerateIdUnique(), 4, 60);
-            Enrolment e4 = new Enrolment(GenerateIdUnique(), 2, 60);
-            Enrolment e5 = new Enrolment(GenerateIdUnique(), 4,40);
-            Enrolment e6 = new Enrolment(GenerateIdUnique(), 4, 20);
-            Enrolment e7 = new Enrolment(GenerateIdUnique(), 3, 20);
-            Enrolment e8 = new Enrolment(GenerateIdUnique(), 4, 50);
+            Enrolment e3 = new Enrolment(GenerateIdUnique(), 4, 23);
+            Enrolment e4 = new Enrolment(GenerateIdUnique(), 2, 23);
+            Enrolment e5 = new Enrolment(GenerateIdUnique(), 23,12);
+            Enrolment e6 = new Enrolment(GenerateIdUnique(), 4, 5);
+            Enrolment e7 = new Enrolment(GenerateIdUnique(), 2, 23);
+            Enrolment e8 = new Enrolment(GenerateIdUnique(), 23, 23);
             
 
             _enrolment.Add(e1);
@@ -136,6 +136,26 @@ namespace online_school.Enrolments.Service
             }
           return idstudenti;
         }
+
+        public Enrolment GetEnrolByCursId(int cursId)
+        {
+            for(int i=0;i< _enrolment.Count;i++)
+            {
+                if (_enrolment[i].CursId.Equals(cursId))
+                {
+                    return _enrolment[i];
+                }
+
+
+
+            }
+            return null;
+
+        }
+
+
+
+
         
         public bool GetEnrolByCursId(int studentId, int cursId)
         {

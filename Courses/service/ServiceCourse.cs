@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tema_OnlineSchool_Noilectii.Books.Model;
 using Tema_OnlineSchool_Noilectii.Courses.model;
-
+using Tema_OnlineSchool_Noilectii.Utile;
 
 namespace Tema_OnlineSchool_Noilectii.Courses.service
 {
@@ -179,7 +179,38 @@ namespace Tema_OnlineSchool_Noilectii.Courses.service
             }
             return null;
         }
+         public Course GetCourseBytitle(string title)
+        {
+            for (int i = 0; i < _curs.Count; i++)
+            {
+                if (_curs[i].Name.Equals(title))
+                {
+                    return _curs[i];
+                }
 
+
+            }
+
+            return null;
+
+        }
+
+
+        public int GetCourseByName(string name)
+        {
+            for(int i=0; i< _curs.Count; i++)
+            {
+                if (_curs[i].Name.Equals(name))
+                {
+                    return _curs[i].Id;
+
+
+                }
+
+
+            }
+            return 0;
+        }
         public bool VerificareCourse(string name)
         {
             for (int i = 0; i < _curs.Count; i++)
@@ -219,6 +250,8 @@ namespace Tema_OnlineSchool_Noilectii.Courses.service
             return curs;
         }
 
+
+
         public List<Course> CourseLista(int idprof)
         {
             List<Course> cursuri = FiltrareCourseByProfId(idprof);
@@ -251,9 +284,57 @@ namespace Tema_OnlineSchool_Noilectii.Courses.service
         }
 
 
+        public List<Course> GetCourseByEnrol(List<int> idCursuri)
+        {
+           List<Course> cursuri = new List<Course> ();
+
+            for(int i=0;i<_curs.Count;i++)
+            {
+                if (idCursuri.Contains(_curs[i].Id))
+                {
+                    cursuri.Add(_curs[i]);
+
+
+                }
+
+
+            }
+
+            return cursuri;
+
+        }
+
+        public void PopularFrecvCursuri(List<FrecventaCurs> frecventaCurs)
+        {
+            foreach(var frecvent in frecventaCurs)
+            {
+                frecvent.course = GetCourseById(frecvent.corsId);
+
+
+            }
 
 
 
+
+        }
+
+        public List<int> GetCourseByProfId(int profId)
+        {
+            List<int> idcursuri = new List<int>();
+            for(int i=0;i<_curs.Count; i++)
+            {
+                if (profId.Equals(_curs[i].Profesorid))
+                {
+                    idcursuri.Add(_curs[i].Id);
+                }
+
+
+            }
+
+            return idcursuri;
+
+
+        }
 
 
 
