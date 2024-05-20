@@ -87,6 +87,59 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
             string filePath = Path.Combine(dataFolder, "Users.txt");
             return filePath;
         }
+        public User GetUseById(int id)
+        {
+            List<User> user = _users;
+            for(int i=0;i<user.Count; i++)
+            {
+                if ((user[i] as Profesor).Equals(id) || (user[i] as Student).Equals(id))
+                {
+
+                    return user[i];
+
+                }
+
+
+            }
+            return null;
+
+        }
+
+
+        public int GenerateRandomId()
+        {
+            Random random = new Random();
+            int nrrandom = random.Next(10, 100);
+            while(GetUserById(nrrandom)!=null)
+            {
+
+                nrrandom = random.Next(10, 100);
+
+            }
+
+
+            return nrrandom;
+
+
+        }
+
+
+        public void adaugareUserProfesor(User user)
+        {
+            (user as Profesor).IdProfesor = GenerateRandomId();
+
+            this._users.Add(user);
+            
+
+        }
+        public void adaugareUserStudent(User student)
+        {
+            (student as Student).Id = GenerateRandomId();
+            this._users.Add(student);
+
+
+        }
+
 
         public void afisareUser()
         {

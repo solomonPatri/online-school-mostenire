@@ -21,11 +21,15 @@ internal class Program
         ServiceCourse curs = new ServiceCourse();
         Console.WriteLine(curs.GetCourseByProfId(profesor.IdProfesor));
 
-
-
-
         ViewProfesor prof = new ViewProfesor(profesor);
        prof.play();
+
+
+        //ViewLogin viewlogin = new ViewLogin();
+        //viewlogin.play();
+
+
+
 
     }
 
