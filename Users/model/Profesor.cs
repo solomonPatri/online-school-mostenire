@@ -11,8 +11,7 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
 {
     internal class Profesor : User
     {
-        private int _idProf;
-        private string _type;
+        
         private string _nume;
         private int _nrStudenti;
         private string _facultate;
@@ -21,35 +20,20 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
         public Profesor(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-           _type = cuvinte[0];
-            _idProf = int.Parse(cuvinte[3]);
             _nume = cuvinte[4];
             _nrStudenti = int.Parse(cuvinte[5]);
             _facultate = cuvinte[6];
 
         }
-        public Profesor(string user,string parola,int idprof,string nume,int nrStudenti,string facultate) : base(user, parola)
+        public Profesor(string type,string user,string parola,int idprof,string nume,int nrStudenti,string facultate) : base(type,user, parola,idprof)
         {
-            this._idProf = idprof;
+          
             this._nume = nume;
             this._nrStudenti = nrStudenti;
             this._facultate = facultate;
-
-
-
         }
         
-        public string Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
-        public int IdProfesor
-        {
-            get { return _idProf; }
-            set { _idProf = value; }
-        }
-
+     
         public string Nume
         {
             get { return _nume; }
@@ -71,7 +55,6 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
         public override string Descriere()
         {
             string desc = " " + base.Descriere();
-            desc += "Type:" + _type + "\n";
             desc += "Nume: " + _nume + "\n";
             desc += "Nr de studenti: " + _nrStudenti + "\n";
             desc += "Facultate: " + _facultate + "\n";

@@ -89,7 +89,9 @@ namespace Tema_OnlineSchool_Noilectii.View4
                         Modificare();
                         break;
 
-
+                    case 10:
+                        run = false;
+                        break;
                 }
 
 

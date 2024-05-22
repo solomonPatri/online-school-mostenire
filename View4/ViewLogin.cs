@@ -106,7 +106,7 @@ public void play()
             int age = int.Parse(Console.ReadLine());
             Console.WriteLine("Media:");
             int media = int.Parse(Console.ReadLine());
-            Student student = new Student(email, password, _serviceuser.GenerateRandomId(), name1, name2, facult, age,media);
+            Student student = new Student("Student",email, password, _serviceuser.GenerateRandomId(), name1, name2, facult, age,media);
             bool verificarea = false;
             if (verificarea)
             {
@@ -114,7 +114,7 @@ public void play()
             }
             else
             {
-                _serviceuser.adaugareUserStudent(student);
+                _serviceuser.adaugareUser(student);
             }
 
 
@@ -135,17 +135,17 @@ public void play()
             int nrstud = int.Parse(Console.ReadLine());
             Console.WriteLine("Facultate: ");
             string facultate = Console.ReadLine();
-            Profesor prof = new Profesor(email,password, _serviceuser.GenerateRandomId(),name,nrstud,facultate);
+            Profesor prof = new Profesor("Profesor",email,password, _serviceuser.GenerateRandomId(),name,nrstud,facultate);
             bool verificarea = false;
             if(verificarea)
             {
-                Console.WriteLine("DEja eista acest profesor,incercati din nou");
+                Console.WriteLine("Deja eista acest profesor,incercati din nou");
 
 
             }
             else
             {
-                _serviceuser.adaugareUserProfesor(prof);
+                _serviceuser.adaugareUser(prof);
             }
 
 

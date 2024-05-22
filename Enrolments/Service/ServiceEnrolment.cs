@@ -28,11 +28,11 @@ namespace online_school.Enrolments.Service
         {
             Enrolment e1 = new Enrolment(GenerateIdUnique(), 1, 10);
             Enrolment e2 = new Enrolment(GenerateIdUnique(), 2, 10);
-            Enrolment e3 = new Enrolment(GenerateIdUnique(), 4, 23);
-            Enrolment e4 = new Enrolment(GenerateIdUnique(), 2, 23);
+            Enrolment e3 = new Enrolment(GenerateIdUnique(), 9, 234);
+            Enrolment e4 = new Enrolment(GenerateIdUnique(), 8, 8);
             Enrolment e5 = new Enrolment(GenerateIdUnique(), 23,12);
             Enrolment e6 = new Enrolment(GenerateIdUnique(), 4, 5);
-            Enrolment e7 = new Enrolment(GenerateIdUnique(), 2, 23);
+            Enrolment e7 = new Enrolment(GenerateIdUnique(), 17,25);
             Enrolment e8 = new Enrolment(GenerateIdUnique(), 23, 23);
             
 
@@ -127,7 +127,7 @@ namespace online_school.Enrolments.Service
             for(int i = 0; i < _enrolment.Count; i++)
             {
 
-                if (idCursuri.Contains(_enrolment[i].CursId) && !idstudenti.Contains(_enrolment[i].StudentId))//sa nu ii repetam acelasi idstudenti doar o singura data
+                if (idCursuri.Contains(_enrolment[i].CursId))
                 {
 
                     idstudenti.Add(_enrolment[i].StudentId);

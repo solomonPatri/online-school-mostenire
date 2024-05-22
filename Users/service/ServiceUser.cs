@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,7 +105,18 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
             return null;
 
         }
+        public void AfisareStudenti()
+        {
+            for (int i = 0; i < _users.Count; i++)
+            {
+                Console.WriteLine((_users[i].Id));
+            }
 
+
+        }
+
+
+       
 
         public int GenerateRandomId()
         {
@@ -122,24 +134,12 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
 
         }
-
-
-        public void adaugareUserProfesor(User user)
+       public void adaugareUser(User user)
         {
-            (user as Profesor).IdProfesor = GenerateRandomId();
-
+            user.Id = GenerateRandomId();
             this._users.Add(user);
-            
 
         }
-        public void adaugareUserStudent(User student)
-        {
-            (student as Student).Id = GenerateRandomId();
-            this._users.Add(student);
-
-
-        }
-
 
         public void afisareUser()
         {
@@ -181,19 +181,8 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
             List<User> users = _users;
             for (int i = 0; i < users.Count; i++)
             {
-                if ((users[i] as Admin).Id == id)
+                if (_users[i].Id == id)
                 {
-                    return users[i];
-
-                }
-                if ((users[i] as Profesor).IdProfesor == id)
-                {
-                    return users[i];
-
-                }
-                if ((users[i] as Student).Id == id)
-                {
-
                     return users[i];
                 }
 
@@ -239,23 +228,13 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
             for (int i = 0; i < _users.Count; i++)
             {
-                if (ids.Equals((_users[i] as Student).Id))
+                if (ids.Contains(_users[i].Id))
                 {
-                    users.Add(_users[i] as Student);
-
+                    users.Add(_users[i]);
+                    
                     
                 }
-                else
-                {
-                    if (ids.Equals((_users[i] as Profesor).IdProfesor))
-                    {
-                        users.Add(_users[i] as Profesor);
-                      
-
-                    }
-                    
-                }
-
+              
             }
 
             return users;
@@ -263,6 +242,68 @@ namespace Tema_OnlineSchool_Noilectii.Users.service
 
 
         } 
+
+
+        public double Media(List<int> idstud)
+        {
+           double  suma = 0;
+           double media = 0;
+
+            for(int i=0;i< _users.Count; i++)
+            {
+                if (idstud.Contains((_users[i].Id)))
+                {
+
+                    suma += (_users[i] as Student).Media;
+                    media = suma / idstud.Count;
+
+                }
+            }
+            return media;
+
+
+
+        }
+        public Student GetStudentIdByName(string name)
+        {
+            
+            for (int i = 0; i < _users.Count; i++)
+            {
+                if ((_users [i] as Student).FirstnameStudent.Equals(name))
+                {
+                   
+                    return (_users[i] as Student);
+
+                }
+
+            }
+            return null;
+
+        }
+        public Profesor GetProfesorByName(string name)
+        {
+            for(int i=0; i< _users.Count;i++)
+            {
+                if ((_users[i] as Profesor).Nume.Equals(name))
+                {
+
+                    return (_users[i] as Profesor);
+
+
+                }
+
+            }
+            return null;
+
+
+        }
+
+
+
+
+
+
+
 
 
     }

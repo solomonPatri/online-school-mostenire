@@ -9,47 +9,33 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
 {
     internal class Student : User
     {
-        private string _type;
-        private int _id;
+       
         private string _firstnameStudent;
         private string _lastnameStudent;
         private string _facultate;
-        private string _email;
         private int _age;
-        private string _password;
         private int _media;
 
         public Student(string Propietati) : base(Propietati)
         {
             string[] cuvinte = Propietati.Split(',');
-            _type = cuvinte[0];
-            _id = int.Parse(cuvinte[3]);
             _firstnameStudent = cuvinte[4];
             _lastnameStudent = cuvinte[5];
             _facultate = cuvinte[6];
             _age = int.Parse(cuvinte[7]);
             _media = int.Parse(cuvinte[8]);
         }
-        public Student(string email,string pass,int id, string firstname, string lastname, string facultate, int age, int media):base (email,pass)
+        public Student(string type,string email,string pass,int id, string firstname, string lastname, string facultate, int age, int media):base (type,email,pass,id)
         {
-            this._id = id;
+            
             this._firstnameStudent = firstname;
             this._lastnameStudent = lastname;
             this._facultate = facultate;
             this._age = age;
             this._media = media;
         }
-       public string Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
+        
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
         public string FirstnameStudent
         {
             get { return _firstnameStudent; }
@@ -66,24 +52,14 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
             set { _facultate = value; }
 
         }
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-
-        }
+       
         public int Age
         {
             get { return _age; }
             set { _age = value; }
 
         }
-        public string Password
-        {
-            get { return _password; }
-            set { _password = value; }
 
-        }
         public int Media
         {
             get { return _media; }

@@ -8,23 +8,19 @@ namespace Tema_OnlineSchool_Noilectii.Users.model
 {
     public class Admin : User
     {
-        private int _nrId;
+
         private string _type;
 
 
         public Admin(string Propietate) : base(Propietate)
         {
             string[] cuvinte = Propietate.Split(',');
-            _nrId = int.Parse(cuvinte[3]);
-            _type = cuvinte[0];
+           
+            _type = cuvinte[3];
         }
 
 
-        public int Id
-        {
-            get { return _nrId; }
-            set { _nrId = value; }
-        }
+        
         public string Type
         {
             get { return _type; }
